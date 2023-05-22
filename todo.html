@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo</title>
+    <style>
+      .buttono {
+        cursor: pointer;
+        border: none;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html">back</a>
+    <h1>To Do</h1>
+    <form onsubmit="handleSubmit(event)">
+      <label for="task">Ievadi uzdevumu:</label>
+      <input id="task" />
+      <button>Spied</button> 
+    </form>
+    <ul id="saraksts"></ul>
+    <script>
+      const uzdevumi = [];
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        const task = document.getElementById("task").value;
+        uzdevumi.push(task);
+        displayItems();
+        document.getElementById("task").value = "";
+        console.log(uzdevumi);
+      }
+        
+      function displayItems() {
+        const list = document.getElementById("saraksts");
+        list.innerHTML = "";
+        uzdevumi.forEach((singleTask, id) => {
+        
+          const newListItem = document.createElement("li");
+          const poga = document.createElement("button");
+          poga.classList.add("buttono");
+          poga.onclick = () => deleteItem(id);
+          poga.textContent = " ❌";
+
+          newListItem.textContent = singleTask;
+          newListItem.appendChild(poga);
+          list.appendChild(newListItem);
+        });
+      }
+
+      function deleteItem(id) {
+        uzdevumi.splice(id, 1);
+        console.log(uzdevumi);
+        displayItems();
+      }
+    </script>
+  </body>
+</html>
