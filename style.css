@@ -1,6 +1,5 @@
 html {
   --header-height: 60px;
-  scroll-snap-type: y mandatory;
 }
 
 html[data-theme="light"] {
@@ -34,31 +33,37 @@ header {
 }
 
 main {
-  margin-top: 100px;
+  margin-top: var(--header-height);
   width: 600px;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
+
 label {
   background-color: var(--secondary-color);
-  height: 80px;
-  width: 50px;
+  height: 60px;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 15px;
-  scroll-snap-align: start;
+  border-radius: 100px;
 }
-#toggle-theme {
-  width: 25px;
-  opacity: 0%;
-}
-#moon {
-  display: var(--moon);
-}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+p {
+  text-align: center;
+}
+
+form {
+  margin-bottom: 100px;
 }
